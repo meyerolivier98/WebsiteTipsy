@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link  rel="stylesheet" href="jquery.datetimepicker.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -13,7 +12,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="jquery.datetimepicker.full.min.js"></script>
     <link href="style.css" rel="stylesheet">
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
@@ -54,13 +52,13 @@
 
 <!--- Chart -->
 <div class="container-fluid padding">
-    <div class="row text-center padding grid-divider">
+    <div class="row text-center padding ">
         <div class="col-xs-12 col-sm-6 chart-one" >
             <h4 class="display-1s">Pick your time and days</h4>
             <input type="text" id="datetimec1" class="form-control" name="datetimesc1" />
             <canvas id="visitorChart"></canvas>
         </div>
-        <div class="col-xs-12 col-sm-6 chart-two " >
+        <div class="col-xs-12 col-sm-6 " >
             <h4 class="display-1s">Pick your time and days</h4>
             <input type="text" id="datetimec2"  class="form-control" name="datetimesc2" />
             <canvas id="visitorCharts"></canvas>
@@ -91,10 +89,10 @@
 
 <!--- Two Column Section -->
 
-<div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+<!--<div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
     <i class="fa fa-calendar"></i>&nbsp;
     <span></span> <i class="fa fa-caret-down"></i>
-</div>
+</div>-->
 
 <!--<script>
     $(function() {
@@ -165,7 +163,7 @@
 <!--- JavaScript -->
 <!--- Chart JavaScript -->
 <script>
-    var searchdatec1 = changedchart().value().toString();
+    var searchdatec1 = 's';
     var searchdatec2 = document.getElementById('datetimec2').value;
     let visitorChart = document.getElementById('visitorChart').getContext('2d');
     let visitorCharts = document.getElementById('visitorCharts').getContext('2d');
@@ -271,10 +269,8 @@
         });
         return 'date';
     });
-    function changedchart() {
-        var date = $("#datetimec1").data("datetimepicker").getDate();
-        return date;
-    }
+   /* var date = $("#datetimec1").data("datetimepicker").getDate();*/
+
 </script>
 </body>
 </html>
