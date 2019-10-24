@@ -42,17 +42,230 @@
     </div>
 </nav>
 
-<!--- Image Slider -->
+<!--- Page navigation -->
+<!--<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+</nav>-->
 
 
-<!--- Jumbotron -->
 
 
+<!--- Profile -->
+<h1 class="text-center display-4">Profile</h1>
+<hr class="light">
+<div class="container-fluid  padding">
+    <div class="text-center  padding ">
+        <div class="profile-card">
+            <div class="card-profile">
+                <img class="card-img" id="uploadimg"  src="assets/iconbeer.svg" alt="Your profile image">
+                <form action="upload.php" method="post" enctype="multipart/form-data">
+                    <input type="file" name="fileToUpload" id="fileToUpload" class="form-control" style="margin-bottom: 1rem">
+                <div class="card-profile">
+                    <p class="card-text">Add a discription</p>
+                    <input type="text" id="profile-description" class="form-control">
+                    <p class="card-text">Add Entrance price (R)</p>
+                    <input type="number" id="entrance-price" min=0 class="form-control">
+                    <input type="submit" value="Submit" class="btn-primary" name="submit" style="margin-top: 1rem">
+                    <hr>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+                </form>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+<hr class="bg-dark">
+<!--- Specials -->
+<h1 class="text-center display-4">Specials</h1>
+<hr class="light">
+<div class="container-fluid padding">
+    <div class="row col-12 padding text-center">
+
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img"  id="uploadimg2" src="assets/img/brandyspecial.jpg">
+                    <div class="card">
+                        <form action="upload.php"  method="post" enctype="multipart/form-data">
+                            <input type="file" name="fileToUpload1" id="fileToUpload2" class="form-control" style="margin-bottom: 1rem">
+                        <p class="card-text">Add a discription</p>
+                        <input type="text" class="form-control">
+                        <p class="card-text">Add a price (R)</p>
+                        <input type="number" min=0 class="form-control">
+                        <input type="submit" value="Submit" class="btn-primary" name="submit" style="margin-top: 1rem">
+                        <hr>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </form>
+                    </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img"  id="uploadimg3" src="assets/img/brandyspecial.jpg">
+                <div class="card">
+                    <form action="upload.php"  method="post" enctype="multipart/form-data">
+                        <input type="file" name="fileToUpload1" id="fileToUpload3" class="form-control" style="margin-bottom: 1rem">
+                        <p class="card-text">Add a discription</p>
+                        <input type="text" class="form-control">
+                        <p class="card-text">Add a price (R)</p>
+                        <input type="number" min=0 class="form-control">
+                        <input type="submit" value="Submit" class="btn-primary" name="submit" style="margin-top: 1rem">
+                        <hr>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img"  id="uploadimg4" src="assets/img/brandyspecial.jpg">
+                <div class="card">
+                    <form action="upload.php"  method="post" enctype="multipart/form-data">
+                        <input type="file" name="fileToUpload1" id="fileToUpload4" class="form-control" style="margin-bottom: 1rem">
+                        <p class="card-text">Add a discription</p>
+                        <input type="text" class="form-control">
+                        <p class="card-text">Add a price (R)</p>
+                        <input type="number" min=0 class="form-control">
+                        <input type="submit" value="Submit" class="btn-primary" name="submit" style="margin-top: 1rem">
+                        <hr>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img"  id="uploadimg5" src="assets/img/brandyspecial.jpg">
+                <div class="card">
+                    <form action="upload.php"  method="post" enctype="multipart/form-data">
+                        <input type="file" name="fileToUpload1" id="fileToUpload5" class="form-control" style="margin-bottom: 1rem">
+                        <p class="card-text">Add a discription</p>
+                        <input type="text" class="form-control">
+                        <p class="card-text">Add a price (R)</p>
+                        <input type="number" min=0 class="form-control">
+                        <input type="submit" value="Submit" class="btn-primary" name="submit" style="margin-top: 1rem">
+                        <hr>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<hr class="bg-dark">
 <!--- Welcome Section -->
+<h1 class="text-center display-4">Events</h1>
+<hr class="light">
+<div class="container-fluid padding">
+    <div class="row col-12 padding text-center">
 
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img"  id="uploadimg6" src="assets/img/brandyspecial.jpg">
+                <div class="card">
+                    <form action="upload.php"  method="post" enctype="multipart/form-data">
+                        <input type="file" name="fileToUpload1" id="fileToUpload6" class="form-control" style="margin-bottom: 1rem">
+                        <p class="card-text">Add a discription</p>
+                        <input type="text" class="form-control">
+                        <p class="card-text">Add a price (R)</p>
+                        <input type="number" min=0 class="form-control">
+                        <input type="submit" value="Submit" class="btn-primary" name="submit" style="margin-top: 1rem">
+                        <hr>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img"  id="uploadimg7" src="assets/img/brandyspecial.jpg">
+                <div class="card">
+                    <form action="upload.php"  method="post" enctype="multipart/form-data">
+                        <input type="file" name="fileToUpload1" id="fileToUpload7" class="form-control" style="margin-bottom: 1rem">
+                        <p class="card-text">Add a discription</p>
+                        <input type="text" class="form-control">
+                        <p class="card-text">Add a price (R)</p>
+                        <input type="number" min=0 class="form-control">
+                        <input type="submit" value="Submit" class="btn-primary" name="submit" style="margin-top: 1rem">
+                        <hr>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img"  id="uploadimg8" src="assets/img/brandyspecial.jpg">
+                <div class="card">
+                    <form action="upload.php"  method="post" enctype="multipart/form-data">
+                        <input type="file" name="fileToUpload1" id="fileToUpload8" class="form-control" style="margin-bottom: 1rem">
+                        <p class="card-text">Add a discription</p>
+                        <input type="text" class="form-control">
+                        <p class="card-text">Add a price (R)</p>
+                        <input type="number" min=0 class="form-control">
+                        <input type="submit" value="Submit" class="btn-primary" name="submit" style="margin-top: 1rem">
+                        <hr>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img"  id="uploadimg9" src="assets/img/brandyspecial.jpg">
+                <div class="card">
+                    <form action="upload.php"  method="post" enctype="multipart/form-data">
+                        <input type="file" name="fileToUpload1" id="fileToUpload9" class="form-control" style="margin-bottom: 1rem">
+                        <p class="card-text">Add a discription</p>
+                        <input type="text" class="form-control">
+                        <p class="card-text">Add a price (R)</p>
+                        <input type="number" min=0 class="form-control">
+                        <input type="submit" value="Submit" class="btn-primary" name="submit" style="margin-top: 1rem">
+                        <hr>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
 
 <!--- Three Column Section -->
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
+            reader.onload = function(e) {
+                $('#uploadimg1').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#fileToUpload1").change(function() {
+        readURL(this);
+    });
+</script>
 
 <!--- Two Column Section -->
 
@@ -76,7 +289,7 @@
 
 
 <!--- Footer -->
-<hr>
+<hr class="bg-dark">
 <footer>
     <div class="container-fluid padding">
         <div class="row text-center">
