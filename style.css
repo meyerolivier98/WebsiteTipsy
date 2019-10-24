@@ -5,6 +5,7 @@ html,body {
     width:100%;
     font-family: 'Poppins', sans-serif;
     color: #222;
+    background-color: #F8F8F8;
 }
 .navbar{
     padding: .8rem ;
@@ -15,6 +16,31 @@ html,body {
 .nav-link{
     font-size: 1.1em !important;
 }
+
+.card-img{
+    height: 50%;
+    width: 100%;
+}
+
+.card{
+   width: 15rem;
+    height: 30rem;
+    background-color: #3f3f3f;
+    color: white;
+}
+
+
+.card-profile{
+    width: 30rem;
+    height: 30rem;
+
+}
+.card-body{
+    max-height: 250px;
+    max-width: 350px;
+}
+
+
 
 .carousel-inner img{
     width: 100%;
@@ -101,10 +127,17 @@ html,body {
 .fa-instagram{
     color: #517fa4;
 }
+
 .fa-facebook:hover,
 .fa-twitter:hover,
 .fa-instagram:hover{
-    color: #d5d5d5;
+    color: #6b0080;
+}
+
+.profile-card{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
 }
 
 footer{
@@ -253,12 +286,22 @@ hr.light{
 
 .chart-one{
     width: 50%;
-    float: left;
+    border-right:5px dotted #222222;
+    /*float: left;*/
 }
 
 .chart-two{
     width: 50%;
-    float: right;
+    /*float: right;*/
+}
+
+.grid-divider {
+    overflow-x: hidden;/* quickfix to hide divider on left side*/
+position: relative;
+}
+
+.chart-style{
+
 }
 /*---Firefox Bug Fix --*/
 .carousel-item {
