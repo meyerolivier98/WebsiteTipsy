@@ -17,26 +17,26 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top" >
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.html"><img src="assets/img/Tipsytextlogo.jpg"></a>
+        <a class="navbar-brand" href="index.php"><img src="assets/img/Tipsytextlogo.jpg"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item ">
-                    <a class="nav-link text-white" href="index.html"><i class="fas fa-home"></i>Home</a>
+                    <a class="nav-link text-white" href="index.php"><i class="fas fa-home"></i>Home</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link text-white" href="Dashboard.html"><i class="fas fa-th"></i>Dashboard</a>
+                    <a class="nav-link text-white" href="Dashboard.php"><i class="fas fa-th"></i>Dashboard</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link text-white" href="Login.html"><i class="fas fa-lock"></i>Login</a>
+                    <a class="nav-link text-white" href="Login.php"><i class="fas fa-lock"></i>Login</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link text-white" href="Account.html"><i class="far fa-id-badge"></i>My Account</a>
+                    <a class="nav-link text-white" href="Account.php"><i class="far fa-id-badge"></i>My Account</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link text-white" href="Contact.html"><i class="fas fa-phone-square"></i>Contact Us</a>
+                    <a class="nav-link text-white" href="Contact.php"><i class="fas fa-phone-square"></i>Contact Us</a>
                 </li>
             </ul>
         </div>
@@ -50,47 +50,65 @@
             <div class="col-12 user-img">
                 <img src="assets/img/face.png">
             </div>
-            <form class="col-12">
+            <form class="col-12" action="" method="post">
                 <div class="form-group">
-                    <input type="email" id class="form-control" placeholder="Enter Email">
+                    <input id="username" name="username" type="username" id class="form-control" placeholder="Enter username">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Enter Password">
+                    <input id="password" name="password" type="password" class="form-control" placeholder="Enter Password">
                 </div>
-                <a href="index.html"><button type="submit" class="btn btn-primary btn-lg"><i class="fas fa-sign-in-alt"></i>Login</button></a>
+                <input name="submit" type="submit" class="btn btn-primary btn-lg"><i class="fas fa-sign-in-alt"></i>Login</input>
+                <span><?php echo $error; ?></span>
             </form>
             <div class="col-12 forgot">
-                <a href="index.html">Forgot Password?</a>
+                <a href="index.php">Forgot Password?</a>
             </div>
             <div class="col-12 forgot">
-                <a href="index.html">Register</a>
+                <a href="index.php">Register</a>
             </div>
         </div> <!--end of modal content-->
     </div>
 </div>
 
-<!--- Javascript login -->
-<script>
-    $( function() {
-        try {
-            this.httpC.get('http://tipsyws/api/user/' + this.username ).subscribe( (res) => {
-                console.log(res[0].u_FirstName, res[0].u_Email, res[0].u_LastName, res[0].u_Password);
-                if (res[0].u_Email === this.username) {
-                    this.user.u_Email = res[0].u_Email;
-                    this.user.u_FirstName = res[0].u_FirstName;
-                    this.user.u_LastName = res[0].u_LastName;
-                    this.user.u_Password = res[0].u_Password;
-                    console.log('Found!', this.user.u_FirstName);
-                    if (this.user.u_Password === this.password) {
-                        console.log('Welcome' + this.user.u_FirstName);
-                        this.router.navigateByUrl('/app/tabs/schedule');
-                    } else {console.log('Password does not match'); }
-                }
-            });
-        } catch (err) {
-            console.log('User does not exist');
+<!--- php login -->
+<?php
+session_start();
+$error ='';
+
+if(isset($_POST['submit'])){
+    if(empty($_POST['username'])||empty($_POST['password'])){
+        $error = "Username or Password invalid";
+    }
+    else
+    {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        $conn = mysqli_connect("http://www.phpmyadmin.co/db_structure.php?server=1&db=heroku_4bc5d272025735d","b2340817a2b535","57b224d2","heroku_4bc5d272025735d");
+        $query = "SELECT b_name, b_password from business where b_name=? AND b_password=? LIMIT 1";
+
+        $stmt = $conn->prepare($query);
+        $stmt ->bind_param("ss",$username,$password);
+        $stmt ->execute();
+        $stmt ->bind_result($username,$password);
+        $stmt ->store_result();
+
+        if ( $stmt ->fetch())
+        {
+            $_SESSION['login_user']=$username;
+            header("location: Account.php");
+            echo 'Logged in';
         }
-    });
+        else{
+            $error="Username or Password is invalid";
+            echo $error;
+        }
+        mysqli_close($conn);
+    }
+}
+?>
+<script>
+
 </script>
 
 <!--- Footer -->
@@ -98,7 +116,7 @@
     <div class="container-fluid padding">
         <div class="row text-center">
             <div class="col-md-4">
-                <a class="navbar-brand" href="index.html"><img src="assets/img/Tipsytextlogo.jpg"></a>
+                <a class="navbar-brand" href="index.php"><img src="assets/img/Tipsytextlogo.jpg"></a>
                 <hr class="light">
                 <p>Phone Number: </p>
                 <p>Email:</p>

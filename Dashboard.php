@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,26 +26,26 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top" >
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.html"><img src="assets/img/Tipsytextlogo.jpg"></a>
+        <a class="navbar-brand" href="index.php"><img src="assets/img/Tipsytextlogo.jpg"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item ">
-                    <a class="nav-link text-white" href="index.html"><i class="fas fa-home"></i>Home</a>
+                    <a class="nav-link text-white" href="index.php"><i class="fas fa-home"></i>Home</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link text-white" href="Dashboard.html"><i class="fas fa-th"></i>Dashboard</a>
+                    <a class="nav-link text-white" href="Dashboard.php"><i class="fas fa-th"></i>Dashboard</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link text-white" href="Login.html"><i class="fas fa-lock"></i>Login</a>
+                    <a class="nav-link text-white" href="Login.php"><i class="fas fa-lock"></i>Login</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link text-white" href="Account.html"><i class="far fa-id-badge"></i>My Account</a>
+                    <a class="nav-link text-white" href="Account.php"><i class="far fa-id-badge"></i>My Account</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link text-white" href="Contact.html"><i class="fas fa-phone-square"></i>Contact Us</a>
+                    <a class="nav-link text-white" href="Contact.php"><i class="fas fa-phone-square"></i>Contact Us</a>
                 </li>
             </ul>
         </div>
@@ -129,7 +131,7 @@
     <div class="container-fluid padding">
         <div class="row text-center">
             <div class="col-md-4">
-                <a class="navbar-brand" href="index.html"><img src="assets/img/Tipsytextlogo.jpg"></a>
+                <a class="navbar-brand" href="index.php"><img src="assets/img/Tipsytextlogo.jpg"></a>
                 <hr class="light">
                 <p>Phone Number: </p>
                 <p>Email:</p>
