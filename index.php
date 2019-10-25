@@ -68,11 +68,11 @@ include ('Loginback.php');
                 <button name="submit" type="submit" class="btn btn-primary btn-lg"><i class="fas fa-sign-in-alt"></i>Login</button>
 
             </form>
-            <div class="col-12 forgot">
+          <!--  <div class="col-12 forgot">
                 <a href="Home.php">Forgot Password?</a>
-            </div>
+            </div>-->
             <div class="col-12 forgot">
-                <a href="Home.php">Register</a>
+                <a href="">To register, give us a call</a>
             </div>
         </div> <!--end of modal content-->
     </div>
