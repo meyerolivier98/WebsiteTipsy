@@ -1,3 +1,10 @@
+<?php
+include ('Loginback.php');
+if(!isset($_SESSION['login_user'])){
+    header("location: Account.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en" class="loginform">
 <head>
@@ -52,13 +59,14 @@
             </div>
             <form class="col-12" action="" method="post">
                 <div class="form-group">
-                    <input id="username" name="username" type="username" id class="form-control" placeholder="Enter username">
+                    <input id="username" name="username" type="text" id class="form-control" placeholder="Enter username">
                 </div>
                 <div class="form-group">
                     <input id="password" name="password" type="password" class="form-control" placeholder="Enter Password">
+                    <span><?php echo $error; ?></span>
                 </div>
-                <input name="submit" type="submit" class="btn btn-primary btn-lg"><i class="fas fa-sign-in-alt"></i>Login</input>
-                <span><?php echo $error; ?></span>
+                <button name="submit" type="submit" class="btn btn-primary btn-lg"><i class="fas fa-sign-in-alt"></i>Login</button>
+
             </form>
             <div class="col-12 forgot">
                 <a href="index.php">Forgot Password?</a>
@@ -69,44 +77,6 @@
         </div> <!--end of modal content-->
     </div>
 </div>
-
-<!--- php login -->
-<?php
-session_start();
-$error ='';
-
-if(isset($_POST['submit'])){
-    if(empty($_POST['username'])||empty($_POST['password'])){
-        $error = "Username or Password invalid";
-    }
-    else
-    {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-
-        $conn = mysqli_connect("http://www.phpmyadmin.co/db_structure.php?server=1&db=heroku_4bc5d272025735d","b2340817a2b535","57b224d2","heroku_4bc5d272025735d");
-        $query = "SELECT b_name, b_password from business where b_name=? AND b_password=? LIMIT 1";
-
-        $stmt = $conn->prepare($query);
-        $stmt ->bind_param("ss",$username,$password);
-        $stmt ->execute();
-        $stmt ->bind_result($username,$password);
-        $stmt ->store_result();
-
-        if ( $stmt ->fetch())
-        {
-            $_SESSION['login_user']=$username;
-            header("location: Account.php");
-            echo 'Logged in';
-        }
-        else{
-            $error="Username or Password is invalid";
-            echo $error;
-        }
-        mysqli_close($conn);
-    }
-}
-?>
 <script>
 
 </script>

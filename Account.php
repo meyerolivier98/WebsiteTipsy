@@ -1,3 +1,9 @@
+<?php
+include ('session.php');
+if(!isset($_SESSION['login_user'])){
+    header("location: index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +63,7 @@
 
 
 <!--- Profile -->
-<h1 class="text-center display-4"><i class="fas fa-id-badge"></i>Welcome<?php echo $login_session?></h1>
+<h1 class="text-center display-4 jumbotron">Welcome <u><?php echo $login_session?></u></h1>
 <h1 class="text-center display-4"><i class="fas fa-id-badge"></i>Profile</h1>
 <hr class="light">
 <div class="container-fluid  padding">
