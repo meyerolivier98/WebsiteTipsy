@@ -1,5 +1,5 @@
 <?php
-include ('Login.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -28,26 +28,26 @@ include ('Login.php');
 <!-- Navigation -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top" >
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.php"><img src="assets/img/Tipsytextlogo.jpg"></a>
+        <a class="navbar-brand" href="Home.php"><img src="assets/img/Tipsytextlogo.jpg"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item ">
-                    <a class="nav-link text-white" href="index.php"><i class="fas fa-home"></i>Home</a>
+                    <a class="nav-link text-white" href="Home.php"><i class="fas fa-home"></i>Home</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link text-white" href="Dashboard.php"><i class="fas fa-th"></i>Dashboard</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link text-white" href="Login.php"><i class="fas fa-lock"></i>Login</a>
+                    <a class="nav-link text-white" href="index.php"><i class="fas fa-lock"></i>Login</a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link text-white" href="Account.php"><i class="far fa-id-badge"></i>My Account</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link text-white" href="Contact.php"><i class="fas fa-phone-square"></i>Contact Us</a>
+                    <a class="nav-link text-white" href="Contact.php"><i class="fas fa-phone-square"></i>The Team</a>
                 </li>
             </ul>
         </div>
@@ -59,12 +59,12 @@ include ('Login.php');
     <div class="row text-center padding ">
         <div class="col-xs-12 col-sm-6 chart-one" >
             <h4 class="display-1s">Pick your time and days</h4>
-            <input type="text" id="datetimec1" class="form-control" name="datetimesc1" />
+            <input type="text" id="datetimec1" onclick="getInputValue()" class="form-control" name="datetimesc1" />
             <canvas id="visitorChart"></canvas>
         </div>
         <div class="col-xs-12 col-sm-6 " >
             <h4 class="display-1s">Pick your time and days</h4>
-            <input type="text" id="datetimec2"  class="form-control" name="datetimesc2" />
+            <input type="text" id="datetimec2" onchange="getInputValue()"  class="form-control" name="datetimesc2" />
             <canvas id="visitorCharts"></canvas>
         </div>
     </div>
@@ -133,10 +133,10 @@ include ('Login.php');
     <div class="container-fluid padding">
         <div class="row text-center">
             <div class="col-md-4">
-                <a class="navbar-brand" href="index.php"><img src="assets/img/Tipsytextlogo.jpg"></a>
+                <a class="navbar-brand" href="Home.php"><img src="assets/img/Tipsytextlogo.jpg"></a>
                 <hr class="light">
-                <p>Phone Number: </p>
-                <p>Email:</p>
+                <p>Phone Number: (012) 345 6789</p>
+                <p>Email: info@tipsysa.co.za</p>
                 <p>Potchefstroom, North West, 2520  </p>
             </div>
 
@@ -167,84 +167,86 @@ include ('Login.php');
 <!--- JavaScript -->
 <!--- Chart JavaScript -->
 <script>
-    var searchdatec1 = 's';
-    var searchdatec2 = document.getElementById('datetimec2').value;
-    let visitorChart = document.getElementById('visitorChart').getContext('2d');
-    let visitorCharts = document.getElementById('visitorCharts').getContext('2d');
-    //Global Options
-    let visitorPopChart = new Chart(visitorChart, {
-        type: 'bar',// bar, horizontalBar, line, pie, radar, doughnut, radar, polarArea
-        data: {
-            labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saterday", "Sunday"],
-            datasets: [{
-                label: 'Visitors',
-                data: [986,
-                    864,
-                    1254,
-                    945,
-                    1546,
-                    1732,
-                    0],
-                backgroundColor: ['rgba(255,99,132,0.6',
-                    'rgba(25,99,132,0.6',
-                    'rgba(255,9,132,0.6',
-                    'rgba(255,99,12,0.6',
-                    'rgba(25,99,132,0.6',
-                    'rgba(25,9,132,0.6',
-                    'rgba(25,0,12,0.6'],
-                fill: false,
-                borderColor: '#777'
-            }],
+    function getInputValue() {
+        var searchdatec1 = document.getElementById('datetimec1').value;
+        var searchdatec2 = document.getElementById('datetimec2').value;
+        let visitorChart = document.getElementById('visitorChart').getContext('2d');
+        let visitorCharts = document.getElementById('visitorCharts').getContext('2d');
+        //Global Options
+        let visitorPopChart = new Chart(visitorChart, {
+            type: 'bar',// bar, horizontalBar, line, pie, radar, doughnut, radar, polarArea
+            data: {
+                labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saterday", "Sunday"],
+                datasets: [{
+                    label: 'Visitors',
+                    data: [986,
+                        864,
+                        1254,
+                        945,
+                        1546,
+                        1732,
+                        0],
+                    backgroundColor: ['rgba(255,99,132,0.6',
+                        'rgba(25,99,132,0.6',
+                        'rgba(255,9,132,0.6',
+                        'rgba(255,99,12,0.6',
+                        'rgba(25,99,132,0.6',
+                        'rgba(25,9,132,0.6',
+                        'rgba(25,0,12,0.6'],
+                    fill: false,
+                    borderColor: '#777'
+                }],
 
-        },
-        options: {
-            title:{
-                display:true,
-                text:'Total visitors from '+searchdatec1,
-                fontSize:25
             },
-            legend:{
-                display: false
+            options: {
+                title: {
+                    display: true,
+                    text: 'Total visitors from ' + searchdatec1,
+                    fontSize: 25
+                },
+                legend: {
+                    display: false
+                }
             }
-        }
 
-    });
-    let visitorPopCharts = new Chart(visitorCharts, {
-        type:'bar',// bar, horizontalBar, line, pie, radar, doughnut, radar, polarArea
-        data:{
-            labels: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saterday","Sunday"],
-            datasets: [{
-                label: 'Visitors',
-                data: [986,
-                    864,
-                    1254,
-                    945,
-                    1546,
-                    1732,
-                    0],
-                backgroundColor: ['rgba(255,99,132,0.6',
-                    'rgba(25,99,132,0.6',
-                    'rgba(255,9,132,0.6',
-                    'rgba(255,99,12,0.6',
-                    'rgba(25,99,132,0.6',
-                    'rgba(25,9,132,0.6',
-                    'rgba(25,0,12,0.6'],
-                fill: false,
-                borderColor: '#777'
-            }],
+        });
+        let visitorPopCharts = new Chart(visitorCharts, {
+            type: 'bar',// bar, horizontalBar, line, pie, radar, doughnut, radar, polarArea
+            data: {
+                labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saterday", "Sunday"],
+                datasets: [{
+                    label: 'Visitors',
+                    data: [986,
+                        864,
+                        1254,
+                        945,
+                        1546,
+                        1732,
+                        0],
+                    backgroundColor: ['rgba(255,99,132,0.6',
+                        'rgba(25,99,132,0.6',
+                        'rgba(255,9,132,0.6',
+                        'rgba(255,99,12,0.6',
+                        'rgba(25,99,132,0.6',
+                        'rgba(25,9,132,0.6',
+                        'rgba(25,0,12,0.6'],
+                    fill: false,
+                    borderColor: '#777'
+                }],
 
-        },
-        options: {
-            title:{
-                display:true,
-                text:'Total visitors from '+ searchdatec2,
-                fontSize:25
             },
-            legend:{
-                display: false
+            options: {
+                title: {
+                    display: true,
+                    text: 'Total visitors from ' + searchdatec2,
+                    fontSize: 25
+                },
+                legend: {
+                    display: false
+                }
             }
-        }
-    });
+        });
+    }
 
 <!--- DateTime pickers javascript -->
     $(function date1() {

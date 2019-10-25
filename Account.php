@@ -22,26 +22,26 @@ if(!isset($_SESSION['login_user'])){
 <!-- Navigation -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top" >
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.php"><img src="assets/img/Tipsytextlogo.jpg"></a>
+        <a class="navbar-brand" href="Home.php"><img src="assets/img/Tipsytextlogo.jpg"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item ">
-                    <a class="nav-link text-white" href="index.php"><i class="fas fa-home"></i>Home</a>
+                    <a class="nav-link text-white" href="Home.php"><i class="fas fa-home"></i>Home</a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link text-white" href="Dashboard.php"><i class="fas fa-th"></i>Dashboard</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link text-white" href="Login.php"><i class="fas fa-lock"></i>Login</a>
+                    <a class="nav-link text-white" href="logout.php"><i class="fas fa-lock"></i>Logout</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link text-white" href="Account.php"><i class="far fa-id-badge"></i>My Account</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link text-white" href="Contact.php"><i class="fas fa-phone-square"></i>Contact Us</a>
+                    <a class="nav-link text-white" href="Contact.php"><i class="fas fa-phone-square"></i>The Team</a>
                 </li>
             </ul>
         </div>
@@ -63,23 +63,25 @@ if(!isset($_SESSION['login_user'])){
 
 
 <!--- Profile -->
-<h1 class="text-center display-4 jumbotron">Welcome <u><?php echo $login_session?></u></h1>
+<h1 class="text-center display-4 jumbotron">Welcome <u><?php echo $login_session; ?></u></h1>
+
 <h1 class="text-center display-4"><i class="fas fa-id-badge"></i>Profile</h1>
 <hr class="light">
 <div class="container-fluid  padding">
     <div class="text-center  padding ">
-        <form action="upload.php" method="post" enctype="multipart/form-data">
+        <form action="Account.php" method="post" enctype="multipart/form-data">
         <div class="profile-card">
             <div class="card-profile">
                 <img class="card-img" id="uploadimg"  src="assets/iconbeer.svg" alt="Your profile image">
-
                     <input type="file" name="fileToUpload" id="fileToUpload" class="form-control" style="margin-bottom: 1rem">
                 <div class="card-profile">
-                    <p class="card-text">Add a discription</p>
-                    <input type="text" id="profile-description" class="form-control">
-                    <p class="card-text">Add Entrance price (R)</p>
-                    <input type="number" id="entrance-price" min=0 class="form-control">
-                    <input type="submit" value="Submit" class="btn-primary" name="submit" style="margin-top: 1rem">
+                    <p class="card-text">Edit discription</p>
+                    <input type="text" value="<?php echo $desc; ?>" id="profile-description" name="profile-description" class="form-control">
+                    <p class="card-text"  >Edit Entrance price (R)</p>
+                    <input type="text" value="<?php echo $entrance; ?>" id="entrance-price"  name="entrance-price"class="form-control">
+                    <p class="card-text" >Edit hours</p>
+                    <input type="text"  value="<?php echo $hours; ?>" id="hours-price" name="hours-price" class="form-control">
+                    <input type="submit" name="update" value="Submit" class="btn-primary" style="margin-top: 1rem">
                     <hr>
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
@@ -92,6 +94,28 @@ if(!isset($_SESSION['login_user'])){
     </div>
 </div>
 <hr class="bg-dark">
+<?php
+    if(isset($_POST['update']))
+    {
+        $conn = mysqli_connect("us-cdbr-iron-east-05.cleardb.net" ,"b2340817a2b535","57b224d2","heroku_4bc5d272025735d");
+
+        $entrancevalue = $_POST['entrance-price'];
+        $descvalue = $_POST['profile-description'];
+        $hourvalue = $_POST['hours-price'];
+        $query = "UPDATE `business` SET `b_Hours`='$hourvalue',`b_Entrance`='$entrancevalue',`b_Desc`='$descvalue' where b_Name = '$user_check'";
+
+        $result = mysqli_query($conn, $query);
+        if($result)
+        {
+            echo 'Data Updated';
+        }else{
+            echo 'Data NOT Updated';
+        }
+        mysqli_close($conn);
+    }
+$page = $_SERVER['PHP_SELF'];
+print "<a href=\"$page\">Reload this page</a>";
+?>
 <!--- Specials -->
 <h1 class="text-center display-4"><i class="fas fa-certificate"></i>Specials</h1>
 <hr class="light">
@@ -118,6 +142,18 @@ if(!isset($_SESSION['login_user'])){
 <h1 class="text-center display-4"><i class="fas fa-calendar-alt"></i>Events</h1>
 <hr class="light">
 <div class="container-fluid padding">
+    <div class="col-md-3">
+        <div class="card">
+            <img class="card-img" id="uploadimg2" src="assets/img/neonparty.jpg">
+            <div class="card">
+                <p class="card-text"><b>Description:</b>Neon party</p>
+                <p class="card-text"><b>Price:</b>Normal Entrance Fee</p>
+                <button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button>
+                <hr>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>
     <button name="add" id="add1" class="btn btn-success" style="align-content: center">Add more</button>
     <div class="container-fluid padding">
         <div class="row col-12 padding text-center" id="dynamic_field1">
@@ -132,14 +168,14 @@ if(!isset($_SESSION['login_user'])){
             var reader = new FileReader();
 
             reader.onload = function(e) {
-                $('#uploadimg1').attr('src', e.target.result);
+                $('#uploadimg').attr('src', e.target.result);
             }
 
             reader.readAsDataURL(input.files[0]);
         }
     }
 
-    $("#fileToUpload1").change(function() {
+    $("#fileToUpload").change(function() {
         readURL(this);
     });
 </script>
@@ -167,7 +203,7 @@ if(!isset($_SESSION['login_user'])){
         var i=1;
         $('#add').click(function(){
             i++;
-            $('#dynamic_field').append('<form action="upload.php"  method="post" enctype="multipart/form-data"><div class="col-md-3"><div class="card"><img class="card-img" id="uploadimg2" src="assets/img/beerspecial.jpg"> <div class="card"><input type="file" name="fileToUpload1" id="fileToUpload2" class="form-control" style="margin-bottom: 1rem"><p class="card-text">Add a discription</p><input type="text" class="form-control"><p class="card-text">Add a price (R)</p><input type="number" min=0 class="form-control"><input type="submit" value="Submit" class="btn-primary" id="sSubmit"'+i+' name="submit" style="margin-top: 1rem"><hr><p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p></div></div> </div></form>');
+            $('#dynamic_field').append('<form action="upload.php"  method="post" enctype="multipart/form-data"><div class="col-md-3"><div class="card"><img class="card-img" id="uploadimg2" src=""> <div class="card"><input type="file" name="fileToUpload1" id="fileToUpload2" class="form-control" style="margin-bottom: 1rem"><p class="card-text">Add a discription</p><input type="text" class="form-control"><p class="card-text">Add a price (R)</p><input type="number" min=0 class="form-control"><input type="submit" value="Submit" class="btn-primary" id="sSubmit"'+i+' name="submit" style="margin-top: 1rem"><hr><p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p></div></div> </div></form>');
         });
         $(document).on('click', '.btn_remove', function(){
             var button_id = $(this).attr("id");
@@ -192,7 +228,7 @@ if(!isset($_SESSION['login_user'])){
             var i=1;
             $('#add1').click(function(){
                 i++;
-                $('#dynamic_field1').append('<form action="upload.php"  method="post" enctype="multipart/form-data"><div class="col-md-3"><div class="card"><img class="card-img" id="uploadimg2" src="assets/img/beerspecial.jpg"> <div class="card"><input type="file" name="fileToUpload1" id="fileToUpload2" class="form-control" style="margin-bottom: 1rem"><p class="card-text">Add a discription</p><input type="text" class="form-control"><p class="card-text">Add a price (R)</p><input type="number" min=0 class="form-control"><input type="submit" value="Submit" class="btn-primary" id="eSubmit"'+i+' name="Submit" style="margin-top: 1rem"><hr><p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p></div></div> </div></form>');
+                $('#dynamic_field1').append('<form action="upload.php"  method="post" enctype="multipart/form-data"><div class="col-md-3"><div class="card"><img class="card-img" id="uploadimg2" src=""> <div class="card"><input type="file" name="fileToUpload1" id="fileToUpload2" class="form-control" style="margin-bottom: 1rem"><p class="card-text">Add a discription</p><input type="text" class="form-control"><p class="card-text">Add a price (R)</p><input type="number" min=0 class="form-control"><input type="submit" value="Submit" class="btn-primary" id="eSubmit"'+i+' name="Submit" style="margin-top: 1rem"><hr><p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p></div></div> </div></form>');
             });
             $(document).on('click', '.btn_remove', function(){
                 var button_id = $(this).attr("id");
@@ -262,10 +298,10 @@ if(!isset($_SESSION['login_user'])){
     <div class="container-fluid padding">
         <div class="row text-center">
             <div class="col-md-4">
-                <a class="navbar-brand" href="index.php"><img src="assets/img/Tipsytextlogo.jpg"></a>
+                <a class="navbar-brand" href="Home.php"><img src="assets/img/Tipsytextlogo.jpg"></a>
                 <hr class="light">
-                <p>Phone Number: </p>
-                <p>Email:</p>
+                <p>Phone Number: (012) 345 6789</p>
+                <p>Email: info@tipsysa.co.za</p>
                 <p>Potchefstroom, North West, 2520  </p>
             </div>
 
